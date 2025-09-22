@@ -1,0 +1,18 @@
+.TH MYSTRCPY 3 "September 2025" "libmyutils" "Library Functions"
+.SH NAME
+mystrcpy \- copy a source string to a destination buffer
+.SH SYNOPSIS
+.B int mystrcpy(char* dest, const char* src);
+.SH DESCRIPTION
+The
+.B mystrcpy()
+function copies the string pointed to by \fIsrc\fR, including the terminating null character ('\0'),
+into the buffer pointed to by \fIdest\fR. It is the caller's responsibility to ensure that
+the destination buffer is large enough to hold the entire string safely.
+.SH RETURN VALUE
+Returns the count of characters copied, excluding the terminating null character.
+.SH ERRORS
+If the \fIdest\fR buffer is too small, a buffer overflow may occur, as this function does not
+perform any bounds checking.
+.SH AUTHOR
+Written by Fahad Rahman

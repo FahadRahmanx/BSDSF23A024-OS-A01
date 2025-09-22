@@ -1,0 +1,18 @@
+.TH MYGREP 3 "September 2025" "libmyutils" "Library Functions"
+.SH NAME
+mygrep \- search for lines in a file that contain a specific substring
+.SH SYNOPSIS
+.B int mygrep(FILE* fp, const char* search_str, char*** matches);
+.SH DESCRIPTION
+The
+.B mygrep()
+function scans the file stream \fIfp\fR for lines that include the substring
+\fIsearch_str\fR. All matching lines are saved in a dynamically allocated array
+pointed to by \fImatches\fR. It is the caller's responsibility to free both the memory
+allocated for each line and the array itself after use.
+.SH RETURN VALUE
+Returns the total number of matching lines found, or \-1 on failure (for example, if invalid arguments are provided).
+.SH ERRORS
+If a NULL file pointer or search string is passed, the function will fail and return an error.
+.SH AUTHOR
+Written by Fahad Rahman

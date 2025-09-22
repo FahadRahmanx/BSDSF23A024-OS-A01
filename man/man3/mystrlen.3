@@ -1,0 +1,17 @@
+.TH MYSTRLEN 3 "September 2025" "libmyutils" "Library Functions"
+.SH NAME
+mystrlen \- determine the length of a string
+.SH SYNOPSIS
+.B int mystrlen(const char* s);
+.SH DESCRIPTION
+The
+.B mystrlen()
+function calculates and returns the number of characters in the string
+pointed to by \fIs\fR, not including the terminating null character ('\0').
+This is a custom implementation of the standard strlen function.
+.SH RETURN VALUE
+Returns the length of the string as an integer.
+.SH ERRORS
+No errors are defined for this function.
+.SH AUTHOR
+Written by Fahad Rahman
