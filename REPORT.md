@@ -23,3 +23,15 @@ Q6. When you run nm on your client_static executable, are the symbols for functi
 
 Running nm on a statically linked executable usually displays the function symbols because the object code from the static library is directly included in the final binary during the linking process. This demonstrates that static linking embeds all necessary code into the executable at build time, unlike dynamic linking, where the symbols are resolved later at runtime through shared libraries.
 
+Q7. What is Position-Independent Code (-fPIC) and why is it a fundamental requirement for creating shared libraries?
+
+Position-Independent Code (PIC) is machine code that can run correctly regardless of where it is loaded in memory. Since shared libraries (.so files) can be mapped to different memory addresses by different processes, they must be compiled with the -fPIC flag, allowing the dynamic loader to relocate them as needed without requiring modifications to the code.
+
+Q8. Explain the difference in file size between your static and dynamic clients. Why does this difference exist?
+
+The client_static executable is larger because it contains all the utility function object code directly embedded within the binary. In contrast, client_dynamic is smaller since it only holds references to the functions in libmyutils.so, with the actual code remaining in the shared library and being loaded into memory at runtime.
+
+Q9. What is the LD_LIBRARY_PATH environment variable? Why was it necessary to set it for your program to run, and what does this tell you about the responsibilities of the operating system's dynamic loader?
+
+The LD_LIBRARY_PATH variable tells the dynamic loader where to look for .so files at runtime. By default, the loader searches only standard system directories like /lib and /usr/lib. Since our libmyutils.so is stored in a custom ./lib directory, we need to update LD_LIBRARY_PATH to include it. This process highlights the role of the dynamic loader, which is to locate, load, and map the required shared libraries before the program starts executing.
+
